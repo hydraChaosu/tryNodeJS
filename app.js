@@ -1,19 +1,24 @@
 const [, , ...args] = process.argv;
 
 let operation;
+let result;
 if (args.length < 3) {
   operation = "help";
 }
-
+operation = args[0];
+numbers = args.slice(1);
 switch (operation) {
   case "add":
-    console.log("add");
+    result = numbers.reduce((acc, cur) => (acc = Number(acc) + Number(cur)));
+    console.log(result);
     break;
   case "sub":
-    console.log("sub");
+    result = numbers.reduce((acc, cur) => (acc = Number(acc) - Number(cur)));
+    console.log(result);
     break;
   case "mul":
-    console.log("mul");
+    result = numbers.reduce((acc, cur) => (acc = Number(acc) * Number(cur)));
+    console.log(result);
     break;
   case "help":
     console.log(
@@ -22,6 +27,9 @@ switch (operation) {
     break;
 
   default:
+    console.log(
+      "you need to have 3 or more arguments, \n first argument is always operation add, sub, mul, rest of arguments are numbers "
+    );
     break;
 }
 
